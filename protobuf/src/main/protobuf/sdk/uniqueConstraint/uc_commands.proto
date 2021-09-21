@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package com.eycads.protocols.sdk.uniqueConstraint.commands;
+
+import "google/protobuf/wrappers.proto";
+import "scalapb/scalapb.proto";
+import "sdk/alona_options.proto";
+
+message AddUniqueConstraint {
+    option (com.eycads.customOptions.alona_message).type_id = 1010000;
+    option (scalapb.message).extends = "com.eycads.sdk.protocols.UniqueConstraintCommand";
+    string id = 1;
+    string owner_id = 2;
+    string code = 3;
+    string value = 4;
+    google.protobuf.StringValue replyTo = 5;
+}
+
+message RemoveUniqueConstraint {
+    option (com.eycads.customOptions.alona_message).type_id = 1010001;
+    option (scalapb.message).extends = "com.eycads.sdk.protocols.UniqueConstraintCommand";
+    string id = 1;
+    string owner_id = 2;
+    string code = 3;
+    string value = 4;
+    google.protobuf.StringValue replyTo = 5;
+}
+
+message CheckUniqueConstraint {
+    option (com.eycads.customOptions.alona_message).type_id = 1010002;
+    option (scalapb.message).extends = "com.eycads.sdk.protocols.UniqueConstraintCommand";
+    string id = 1;
+    string owner_id = 2;
+    string code = 3;
+    string value = 4;
+    google.protobuf.StringValue replyTo = 5;
+}
+

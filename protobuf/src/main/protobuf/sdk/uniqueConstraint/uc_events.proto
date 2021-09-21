@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package com.eycads.protocols.sdk.uniqueConstraint.events;
+
+import "scalapb/scalapb.proto";
+import "sdk/alona_options.proto";
+import "sdk/sdk_common.proto";
+
+message UniqueConstraintInit {
+    option (com.eycads.customOptions.alona_message).type_id = 1011000;
+    option (scalapb.message).extends = "com.eycads.sdk.protocols.UniqueConstraintEvent";
+    string id = 1;
+    string owner_id = 2;
+    string code = 3;
+    string value = 4;
+    com.eycads.protocols.sdk.ShardingDetails sharding_details = 5;
+}
+
+message UniqueConstraintAdded {
+    option (com.eycads.customOptions.alona_message).type_id = 1011001;
+    option (scalapb.message).extends = "com.eycads.sdk.protocols.UniqueConstraintEvent";
+    string id = 1;
+    string value = 2;
+}
+
+message UniqueConstraintRemoved {
+    option (com.eycads.customOptions.alona_message).type_id = 1011002;
+    option (scalapb.message).extends = "com.eycads.sdk.protocols.UniqueConstraintEvent";
+    string id = 1;
+    string value = 2;
+}
+

@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+package com.eycads.protocols.account.states;
+
+import "scalapb/scalapb.proto";
+import "sdk/alona_options.proto";
+import "sdk/relation/relation_common.proto";
+
+option (scalapb.options) = {
+    single_file: true
+};
+
+message AccountEntityStateData {
+    option (com.eycads.customOptions.alona_message).type_id = 1102000;
+    option (scalapb.message).extends = "com.eycads.sdk.protocols.StateData";
+    string id = 1;
+    int32 code = 2;
+}
+
+message Initial {
+    option (com.eycads.customOptions.alona_message).type_id = 1102001;
+    option (scalapb.message).extends = "com.eycads.sdk.protocols._AccountState";
+    AccountEntityStateData stateData = 1 [(scalapb.field).no_box = true];
+    com.eycads.protocols.sdk.relation.EntityRelationData relationData = 2 [(scalapb.field).no_box = true];
+}
+
+message AwaitCreation {
+    option (com.eycads.customOptions.alona_message).type_id = 1102002;
+    option (scalapb.message).extends = "com.eycads.sdk.protocols._AccountState";
+    AccountEntityStateData stateData = 1 [(scalapb.field).no_box = true];
+    com.eycads.protocols.sdk.relation.EntityRelationData relationData = 2 [(scalapb.field).no_box = true];
+}
+
+message Ready {
+    option (com.eycads.customOptions.alona_message).type_id = 1102003;
+    option (scalapb.message).extends = "com.eycads.sdk.protocols._AccountState";
+    AccountEntityStateData stateData = 1 [(scalapb.field).no_box = true];
+    com.eycads.protocols.sdk.relation.EntityRelationData relationData = 2 [(scalapb.field).no_box = true];
+}
+
+message AwaitRelation {
+    option (com.eycads.customOptions.alona_message).type_id = 1102004;
+    option (scalapb.message).extends = "com.eycads.sdk.protocols._AccountState";
+    AccountEntityStateData stateData = 1 [(scalapb.field).no_box = true];
+    com.eycads.protocols.sdk.relation.EntityRelationData relationData = 2 [(scalapb.field).no_box = true];
+}
+
+message DeletionInProgress {
+    option (com.eycads.customOptions.alona_message).type_id = 1102005;
+    option (scalapb.message).extends = "com.eycads.sdk.protocols._AccountState";
+    AccountEntityStateData stateData = 1 [(scalapb.field).no_box = true];
+    com.eycads.protocols.sdk.relation.EntityRelationData relationData = 2 [(scalapb.field).no_box = true];
+}
+
+message Deleted {
+    option (com.eycads.customOptions.alona_message).type_id = 1102006;
+    option (scalapb.message).extends = "com.eycads.sdk.protocols._AccountState";
+    AccountEntityStateData stateData = 1 [(scalapb.field).no_box = true];
+    com.eycads.protocols.sdk.relation.EntityRelationData relationData = 2 [(scalapb.field).no_box = true];
+}

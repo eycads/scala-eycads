@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package com.eycads.protocols.user.common;
+
+import "scalapb/scalapb.proto";
+import "google/protobuf/timestamp.proto";
+
+option (scalapb.options) = {
+    single_file: true
+};
+
+enum UserCreationMode {
+    NORMAL = 0;
+    INVITE_VIA_EMAIL = 1;
+    INVITE_VIA_CODE = 2;
+    OAUTH_2 = 3;
+}
+
+message PasswordHistory {
+    google.protobuf.Timestamp timestamp = 1;
+    string password_hash = 2;
+}

@@ -1,0 +1,59 @@
+syntax = "proto3";
+
+package com.eycads.protocols.sdk.relation.events;
+
+import "scalapb/scalapb.proto";
+import "sdk/alona_options.proto";
+import "sdk/relation/relation_common.proto";
+
+message CreationRequestSent {
+    option (com.eycads.customOptions.alona_message).type_id = 1001000;
+    option (scalapb.message).extends = "com.eycads.sdk.protocols.RelationEvent";
+    string id = 1;
+    int32 parent_type = 2;
+    string parent_id = 3;
+    string parent_description = 4;
+    bytes creation_command = 5;
+}
+
+message CreationSkipAckSuccessful {
+    option (com.eycads.customOptions.alona_message).type_id = 1001001;
+    option (scalapb.message).extends = "com.eycads.sdk.protocols.RelationEvent";
+    string id = 1;
+    int32 parent_type = 2;
+    string parent_id = 3;
+    string parent_description = 4;
+}
+
+
+message CreationParentAckMarked {
+    option (com.eycads.customOptions.alona_message).type_id = 1001002;
+    option (scalapb.message).extends = "com.eycads.sdk.protocols.RelationEvent";
+    string id = 1;
+    int32 child_type = 2;
+    string child_id = 3;
+    string child_description = 4;
+    bool is_acknowledged = 5;
+}
+
+message CreationRequestSuccessful {
+    option (com.eycads.customOptions.alona_message).type_id = 1001003;
+    option (scalapb.message).extends = "com.eycads.sdk.protocols.RelationEvent";
+    string id = 1;
+    int32 child_type = 2;
+    int32 parent_type = 3;
+    string parent_id = 4;
+    string parent_description = 5;
+    CreationStatus creation_status = 6;
+}
+
+message RelationDataRetrieved {
+    option (com.eycads.customOptions.alona_message).type_id = 1001004;
+    option (scalapb.message).extends = "com.eycads.sdk.protocols.RelationEvent";
+    int32 parent_type = 1;
+    string parent_id = 2;
+    string parent_description = 3;
+    CreationStatus creation_status = 4;
+    bool is_rogue_entity = 5;
+    map<string, ChildRelationCreated> child_map = 6;
+}

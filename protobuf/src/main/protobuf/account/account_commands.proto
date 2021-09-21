@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package com.eycads.protocols.account.commands;
+
+import "google/protobuf/wrappers.proto";
+import "scalapb/scalapb.proto";
+import "sdk/alona_options.proto";
+import "sdk/relation/relation_common.proto";
+
+message CreateAccount {
+    option (com.eycads.customOptions.alona_message).type_id = 1100000;
+    option (scalapb.message).extends = "com.eycads.sdk.protocols.CreateAccountCommand";
+    string id = 1;
+    int32 code = 2;
+    google.protobuf.StringValue replyTo = 3;
+    string owner_id = 4;
+    com.eycads.protocols.sdk.relation.ParentRelationOverride parent_relation_override = 5;
+    bool skipParentConfirmation = 6;
+}
+
+message GetAccountDetails {
+    option (com.eycads.customOptions.alona_message).type_id = 1100001;
+    option (scalapb.message).extends = "com.eycads.sdk.protocols.AccountCommand";
+    google.protobuf.StringValue replyTo = 1;
+}
+
+message UpdateAccount {
+    option (com.eycads.customOptions.alona_message).type_id = 1100002;
+    option (scalapb.message).extends = "com.eycads.sdk.protocols.AccountCommand";
+    string id = 1;
+    int32 code = 2;
+    google.protobuf.StringValue replyTo = 3;
+}

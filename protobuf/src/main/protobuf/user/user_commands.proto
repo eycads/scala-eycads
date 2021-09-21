@@ -1,0 +1,79 @@
+syntax = "proto3";
+
+package com.eycads.protocols.user.commands;
+
+import "scalapb/scalapb.proto";
+import "sdk/alona_options.proto";
+import "google/protobuf/wrappers.proto";
+import "google/type/date.proto";
+import "sdk/relation/relation_common.proto";
+import "sdk/sdk_common.proto";
+import "user/user_common.proto";
+
+message CreateUser {
+    option (scalapb.message).extends = "com.eycads.sdk.protocols.UserCommand";
+    int32 userId = 1;
+    string firstName = 2;
+    string lastName = 3;
+    google.protobuf.StringValue replyTo = 4;
+}
+
+message CreateUserComplete {
+    option (com.eycads.customOptions.alona_message).type_id = 1110000;
+    option (scalapb.message).extends = "com.eycads.sdk.protocols.CreateUserCommand";
+    string id = 1;
+    string user_name = 2;
+    string first_name = 3;
+    string last_name = 4;
+    google.protobuf.StringValue middle_name = 5;
+    google.protobuf.StringValue name_prefix = 6;
+    google.protobuf.StringValue name_suffix = 7;
+    google.protobuf.StringValue email = 8;
+    google.protobuf.StringValue number = 9;
+    google.type.Date birth_date = 10 [(scalapb.field).no_box = true];
+    com.eycads.protocols.sdk.Gender gender = 11;
+    string passwordHash = 12;
+    com.eycads.protocols.user.common.UserCreationMode creation_mode = 13;
+    google.protobuf.StringValue replyTo = 14;
+    string owner_id = 15;
+    com.eycads.protocols.sdk.relation.ParentRelationOverride parent_relation_override = 16;
+    bool skipParentConfirmation = 17;
+}
+
+message CreateUserCompact {
+    option (com.eycads.customOptions.alona_message).type_id = 1110001;
+    option (scalapb.message).extends = "com.eycads.sdk.protocols.CreateUserCommand";
+    string id = 1;
+    string user_name = 2;
+    string first_name = 3;
+    string last_name = 4;
+    google.protobuf.StringValue email = 5;
+    google.protobuf.StringValue number = 6;
+    google.type.Date birth_date = 7 [(scalapb.field).no_box = true];
+    com.eycads.protocols.sdk.Gender gender = 8;
+    string password_hash = 9;
+    com.eycads.protocols.user.common.UserCreationMode creation_mode = 10;
+    google.protobuf.StringValue replyTo = 11;
+    string owner_id = 12;
+    com.eycads.protocols.sdk.relation.ParentRelationOverride parent_relation_override = 13;
+    bool skipParentConfirmation = 14;
+}
+
+message CreateUserCompact2 {
+    option (com.eycads.customOptions.alona_message).type_id = 1110002;
+//    option (scalapb.message).extends = "dt.alona.sdk.protocols.CreateUserCommand";
+    string id = 1;
+    string user_name = 2;
+    string first_name = 3;
+    string last_name = 4;
+    google.protobuf.StringValue email = 5;
+    google.protobuf.StringValue number = 6;
+    google.type.Date birth_date = 7 [(scalapb.field).no_box = true];
+//    com.eycads.protocols.sdk.Gender gender = 8;
+    string password_hash = 9;
+//    com.eycads.protocols.user.common.UserCreationMode creation_mode = 10;
+    google.protobuf.StringValue replyTo = 11;
+    string owner_id = 12;
+//    com.eycads.protocols.sdk.relation.ParentRelationOverride parent_relation_override = 13;
+    bool skipParentConfirmation = 14;
+}

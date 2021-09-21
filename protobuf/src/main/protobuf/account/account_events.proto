@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package com.eycads.protocols.account.events;
+
+import "scalapb/scalapb.proto";
+import "sdk/alona_options.proto";
+
+message AccountCreated {
+    option (com.eycads.customOptions.alona_message).type_id = 1101000;
+    option (scalapb.message).extends = "com.eycads.sdk.protocols.AccountEvent";
+    string id = 1;
+    int32 code = 2;
+}
+
+message AccountDetailsRetrieved {
+    option (com.eycads.customOptions.alona_message).type_id = 1101001;
+    option (scalapb.message).extends = "com.eycads.sdk.protocols.AccountEvent";
+    string id = 1;
+    int32 code = 2;
+}
+
+message AccountDetailsUpdated {
+    option (com.eycads.customOptions.alona_message).type_id = 1101002;
+    option (scalapb.message).extends = "com.eycads.sdk.protocols.AccountEvent";
+    string id = 1;
+    int32 code = 2;
+}

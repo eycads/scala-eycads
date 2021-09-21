@@ -1,0 +1,63 @@
+syntax = "proto3";
+
+package com.eycads.protocols.user.states;
+
+import "scalapb/scalapb.proto";
+import "sdk/alona_options.proto";
+import "google/protobuf/wrappers.proto";
+import "google/type/date.proto";
+import "sdk/relation/relation_common.proto";
+import "sdk/sdk_common.proto";
+import "user/user_common.proto";
+
+option (scalapb.options) = {
+    single_file: true
+};
+
+message UserEntityStateData {
+    option (com.eycads.customOptions.alona_message).type_id = 1202000;
+    option (scalapb.message).extends = "com.eycads.sdk.protocols.StateData";
+    string id = 1;
+    string user_name = 2;
+    string first_name = 3;
+    string last_name = 4;
+    google.protobuf.StringValue middle_name = 5;
+    google.protobuf.StringValue name_prefix = 6;
+    google.protobuf.StringValue name_suffix = 7;
+    google.protobuf.StringValue email = 8;
+    google.protobuf.StringValue number = 9;
+    google.type.Date birth_date = 10 [(scalapb.field).no_box = true];
+    com.eycads.protocols.sdk.Gender gender = 11;
+    string password_hash = 12;
+    repeated com.eycads.protocols.user.common.PasswordHistory password_history = 13;
+    int32 login_attempts = 14;
+    com.eycads.protocols.user.common.UserCreationMode creation_mode = 15;
+}
+
+message Initial {
+    option (com.eycads.customOptions.alona_message).type_id = 1202001;
+    option (scalapb.message).extends = "com.eycads.sdk.protocols._UserState";
+    UserEntityStateData stateData = 1 [(scalapb.field).no_box = true];
+    com.eycads.protocols.sdk.relation.EntityRelationData relationData = 2 [(scalapb.field).no_box = true];
+}
+
+message AwaitCreation {
+    option (com.eycads.customOptions.alona_message).type_id = 1202002;
+    option (scalapb.message).extends = "com.eycads.sdk.protocols._UserState";
+    UserEntityStateData stateData = 1 [(scalapb.field).no_box = true];
+    com.eycads.protocols.sdk.relation.EntityRelationData relationData = 2 [(scalapb.field).no_box = true];
+}
+
+message Pending {
+    option (com.eycads.customOptions.alona_message).type_id = 1202003;
+    option (scalapb.message).extends = "com.eycads.sdk.protocols._UserState";
+    UserEntityStateData stateData = 1 [(scalapb.field).no_box = true];
+    com.eycads.protocols.sdk.relation.EntityRelationData relationData = 2 [(scalapb.field).no_box = true];
+}
+
+message Ready {
+    option (com.eycads.customOptions.alona_message).type_id = 1202004;
+    option (scalapb.message).extends = "com.eycads.sdk.protocols._UserState";
+    UserEntityStateData stateData = 1 [(scalapb.field).no_box = true];
+    com.eycads.protocols.sdk.relation.EntityRelationData relationData = 2 [(scalapb.field).no_box = true];
+}

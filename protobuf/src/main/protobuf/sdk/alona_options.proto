@@ -1,0 +1,13 @@
+syntax = "proto2";
+
+package com.eycads.customOptions;
+
+import "google/protobuf/descriptor.proto";
+
+message AlonaMessageOptions {
+    optional int32 type_id = 1;
+}
+
+extend google.protobuf.MessageOptions {
+    optional AlonaMessageOptions alona_message = 50000;
+}

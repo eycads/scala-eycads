@@ -1,0 +1,20 @@
+.idea
+.bsp
+**/target
+**/target 2
+**/.classpath
+**/.project
+**/.settings
+**/.idea
+**/logs
+**/*.log
+**/generatedProto/src/main/scala/dt/*
+**/protobuf/src/main/protocols/*
+**/protobuf/src/main/scala/dt/alona/sdk/protocols/ScalaPbRegistry.scala
+**/null
+dt-test-scala.iml
+
+**/.DS_Store
+.DS_Store
+
+

@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package com.eycads.protocols.account.response;
+
+import "scalapb/scalapb.proto";
+
+message AccountDetailsResponse {
+    option (scalapb.message).extends = "com.eycads.sdk.protocols.AccountResponse";
+    string id = 1;
+    int32 code = 2;
+}

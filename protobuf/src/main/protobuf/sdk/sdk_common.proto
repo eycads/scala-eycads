@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package com.eycads.protocols.sdk;
+
+import "scalapb/scalapb.proto";
+
+option (scalapb.options) = {
+    single_file: true
+};
+
+message ShardingDetails {
+    ShardingStrategy sharding_strategy = 1;
+    string sharding_value = 2;
+}
+
+enum ShardingStrategy {
+    ID = 0;
+    STARTS_WITH = 1;
+    CONTACT_NUMBER = 2;
+}
+
+enum Gender {
+    MALE = 0;
+    FEMALE = 1;
+}

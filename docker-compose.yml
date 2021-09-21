@@ -1,0 +1,78 @@
+#version: "3.7"
+#services:
+#  zookeeper-test:
+#    image: wurstmeister/zookeeper
+#    container_name: zookeeper-test
+#    ports:
+#      - "2181:2181"
+#
+#  kafka-test:
+#    build: .
+#    image: wurstmeister/kafka:2.12-2.3.0
+#    container_name: kafka-test
+#    ports:
+#      - "9092"
+#    environment:
+#      KAFKA_ADVERTISED_HOST_NAME: 192.168.254.103
+#      KAFKA_CREATE_TOPICS: "alona:1:1"
+#      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+#      KAFKA_ZOOKEEPER_CONNECTION_TIMEOUT_MS: 120000
+#      KAFKA_ZOOKEEPER_SESSION_TIMEOUT_MS: 120000
+#    volumes:
+#      - /var/run/docker.sock:/var/run/docker.sock
+
+version: '3.7'
+
+services:
+#  zookeeper-test:
+#    image: wurstmeister/zookeeper
+#    container_name: zookeeper-test
+#    ports:
+#      - "2181:2181"
+#    environment:
+#      ZOOKEEPER_CLIENT_PORT: 2181
+#      ZOOKEEPER_TICK_TIME: 2000
+#    hostname: zookeper-test
+##   https://github.com/wurstmeister/kafka-docker/issues/389
+#    tmpfs: "/datalog"
+
+#  kafka-test:
+#    build: .
+#    image: wurstmeister/kafka:2.12-2.3.0
+#    container_name: kafka-test
+#    ports:
+#      - "9092:9092"
+#    environment:
+#      KAFKA_ADVERTISED_HOST_NAME: 10.176.39.102
+#      KAFKA_CREATE_TOPICS: "alona:1:1"
+#      KAFKA_ZOOKEEPER_CONNECT: zookeeper-test:2181
+#      KAFKA_ZOOKEEPER_CONNECTION_TIMEOUT_MS: 120000
+#      KAFKA_ZOOKEEPER_SESSION_TIMEOUT_MS: 120000
+#      KAFKA_BROKER_ID: 1
+##      KAFKA_LISTENERS: LISTENER_FRED://localhost:9092
+##      KAFKA_ADVERTISED_LISTENERS: LISTENER_FRED://localhost:9092
+##      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: LISTENER_FRED:PLAINTEXT
+##      KAFKA_INTER_BROKER_LISTENER_NAME: LISTENER_FRED
+#    volumes:
+#      - /var/run/docker.sock:/var/run/docker.sock
+
+#  kafka-manager-test:
+#    image: hlebalbau/kafka-manager:2.0.0.2
+#    container_name: kafka-manager-test
+#    ports:
+#      - "9000:9000"
+#    environment:
+#      ZK_HOSTS: "zookeeper-test:2181"
+#      APPLICATION_SECRET: "random-secret"
+#    command: -Dpidfile.path=/dev/null
+
+  cassandra-test:
+    image: cassandra:2.1.21
+    container_name: cassandra-test
+    ports:
+      - "9042:9042"
+    environment:
+      CASSANDRA_SEEDS: cassandra-test
+      CASSANDRA_PASSWORD: alona
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
